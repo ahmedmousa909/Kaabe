@@ -1,11 +1,4 @@
-# KAABE Web V3
-GitHub Pages-ready static KAABE landing page.
+# KAABE V4
+Functional GitHub Pages landing page with real asset folders, SVG icons, CSS dashboard/phone mockups, animations, scroll reveals and responsive mobile layout.
 
-Includes:
-- KAABE logo
-- richer gradients and card styling
-- responsive desktop/mobile layout
-- subtle CSS animations
-- product visual asset
-
-Upload all files/folders to the repository root, including the `assets` folder.
+Upload every file and the full `assets` folder to the repository root.
