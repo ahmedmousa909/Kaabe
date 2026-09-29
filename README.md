@@ -1,8 +1,11 @@
-# KAABE Web V2
-Responsive GitHub Pages landing page for KAABE — AI Automation for Business.
+# KAABE Web V3
+GitHub Pages-ready static KAABE landing page.
 
-## GitHub Pages
-Upload **all files in this folder to the repository root** (not inside another folder).
-The logo path is `kaabe-logo.png`, so keep that exact filename in the root beside `index.html`.
+Includes:
+- KAABE logo
+- richer gradients and card styling
+- responsive desktop/mobile layout
+- subtle CSS animations
+- product visual asset
 
-Files: `index.html`, `style.css`, `app.js`, `kaabe-logo.png`.
+Upload all files/folders to the repository root, including the `assets` folder.
