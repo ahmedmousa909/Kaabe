@@ -1,0 +1,2 @@
+document.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{if(btn.textContent.includes('Get Started')) document.querySelector('#pricing').scrollIntoView({behavior:'smooth'});if(btn.textContent.includes('Watch Demo')) alert('KAABE demo: WhatsApp, email, appointments and AI assistants will connect here in the next phase.');}));
+document.querySelector('.menu').addEventListener('click',()=>alert('Mobile navigation is ready for the next app phase.'));
