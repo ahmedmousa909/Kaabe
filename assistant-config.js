@@ -1,0 +1,8 @@
+const client=window.kaabeSupabase,$=s=>document.querySelector(s);
+const id=new URLSearchParams(location.search).get("id"); let agent=null;
+(async()=>{const{data:s}=await client.auth.getSession();if(!s.session){location.href="login.html";return}if(!id){location.href="assistants.html";return}
+const{data,error}=await client.from("agents").select("*").eq("id",id).single();
+if(error||!data){alert("Assistant not found.");location.href="assistants.html";return}
+agent=data;$("#agent-name").value=agent.name||"";$("#agent-type").value=agent.type||"";$("#agent-instructions").value=agent.settings?.instructions||"";$("#agent-tone").value=agent.settings?.tone||"professional";$("#reply-mode").value=agent.settings?.reply_mode||"approval_required";$("#agent-status").value=agent.status||"paused";$("#loading").hidden=true;$("#agent-form").hidden=false})();
+$("#agent-form").addEventListener("submit",async e=>{e.preventDefault();const settings={...(agent.settings||{}),instructions:$("#agent-instructions").value.trim(),tone:$("#agent-tone").value,reply_mode:$("#reply-mode").value};const{error}=await client.from("agents").update({name:$("#agent-name").value.trim(),status:$("#agent-status").value,settings,updated_at:new Date().toISOString()}).eq("id",id);$("#save-state").textContent=error?("Error: "+error.message):"✓ Changes saved";});
+$("#delete-agent").addEventListener("click",async()=>{if(!confirm("Delete this AI assistant?"))return;const{error}=await client.from("agents").delete().eq("id",id);if(error){alert(error.message);return}location.href="assistants.html";});
