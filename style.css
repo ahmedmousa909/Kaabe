@@ -2,3 +2,66 @@
 @media(max-width:800px){html,body{width:100%;max-width:100vw;overflow-x:hidden}header{padding:8px 18px}.brand{max-width:calc(100% - 70px)}.brand img{width:190px}nav,.nav-actions{display:none}.menu{display:block;margin-left:auto;border:1px solid #dce5f4;background:#fff;border-radius:14px;font-size:24px;padding:10px 15px}.mobile-nav{position:absolute;top:76px;left:12px;right:12px;background:#fff;border:1px solid #dfe7f5;border-radius:16px;padding:12px;z-index:100}.mobile-nav.open{display:grid;gap:5px}.mobile-nav a{padding:12px;text-decoration:none;color:#081536;font-weight:700}.hero,.team{display:block;padding:38px 20px}.hero h1{font-size:44px}.cta{display:grid}.hero-visual{min-height:365px;margin-top:28px}.laptop{left:0;width:92%;height:285px}.phone{right:0;width:130px;height:245px}.trusted,.how,.pricing{padding:22px 20px}.logo-row{overflow:visible}.marquee{animation-duration:17s}.team{padding-top:40px}.person-card{min-height:340px}.team-copy{padding-top:24px}.team h2{font-size:38px}.benefits{grid-template-columns:1fr}.steps,.plans{grid-template-columns:1fr}.plans{gap:18px}footer{flex-direction:column;align-items:flex-start}}
 /* KAABE final footer polish */
 .final-cta{min-height:116px;padding:22px 5vw;background:linear-gradient(105deg,#072b91 0%,#142ca6 48%,#5d10c8 100%);color:#fff;display:grid;grid-template-columns:220px 1fr auto;align-items:center;gap:34px;overflow:hidden}.footer-brand img{width:190px;max-height:72px;object-fit:contain;filter:brightness(0) invert(1)}.footer-copy{display:grid;gap:5px}.footer-copy strong{font-size:22px;line-height:1.08}.footer-copy small,.footer-actions small{opacity:.9}.footer-actions{display:grid;grid-template-columns:auto auto;gap:10px 14px;align-items:center}.footer-actions a,.footer-actions button{border-radius:9px;padding:12px 20px;font-weight:800;text-decoration:none}.footer-primary{background:#fff;color:#081536}.footer-demo{border:1px solid #ffffff80;background:transparent;color:#fff}.footer-actions small{grid-column:1/-1;text-align:center}@media(max-width:800px){.final-cta{grid-template-columns:1fr;padding:24px 20px;gap:16px}.footer-brand img{width:155px}.footer-copy strong{font-size:20px}.footer-actions{grid-template-columns:1fr}.footer-actions a,.footer-actions button{text-align:center;width:100%}.footer-actions small{grid-column:1;text-align:left}}
+
+/* KAABE final polish: hero CTAs + bottom CTA only */
+.hero .cta .primary.big{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  text-decoration:none;box-shadow:0 12px 28px rgba(72,55,238,.22);
+  transition:transform .2s ease,box-shadow .2s ease
+}
+.hero .cta .primary.big:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(72,55,238,.3)}
+.hero .cta .ghost.big{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  color:#081536;background:#fff;border:1px solid #dfe7f5;
+  box-shadow:0 8px 24px rgba(8,21,54,.06)
+}
+.play-dot{
+  display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:#081536;color:#fff;font-size:12px;line-height:1
+}
+.cta-arrow{font-size:22px}
+
+.final-cta{
+  margin:0;padding:30px max(5vw,28px);
+  min-height:190px;
+  display:grid;grid-template-columns:minmax(210px,.9fr) minmax(280px,1.25fr) minmax(220px,.8fr);
+  align-items:center;gap:38px;color:#fff;
+  background:
+    radial-gradient(circle at 15% 120%,rgba(0,195,255,.45),transparent 34%),
+    radial-gradient(circle at 92% -20%,rgba(145,40,255,.65),transparent 38%),
+    linear-gradient(105deg,#082d91 0%,#1028a8 48%,#5110c8 100%);
+  overflow:hidden
+}
+.footer-brand img{
+  width:min(290px,100%);height:auto;filter:brightness(0) invert(1);
+}
+.footer-copy{display:flex;flex-direction:column;gap:8px}
+.footer-copy strong{font-size:26px;line-height:1.08}
+.footer-copy>span{font-size:15px;line-height:1.45;color:#e4eaff}
+.footer-checks{display:flex;gap:18px;flex-wrap:wrap;margin-top:7px}
+.footer-checks small{font-size:13px;color:#fff}
+.footer-actions{display:grid;gap:12px}
+.footer-primary,.footer-demo{
+  min-height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  gap:10px;font-weight:800;text-decoration:none
+}
+.footer-primary{background:#fff;color:#1543db;box-shadow:0 10px 28px rgba(0,0,0,.16)}
+.footer-demo{border:1px solid rgba(255,255,255,.55);background:rgba(8,20,100,.25);color:#fff}
+.footer-demo .play-dot{background:#fff;color:#1737b6;width:26px;height:26px}
+
+@media(max-width:800px){
+  .hero .cta{gap:12px}
+  .hero .cta .big{min-height:58px;width:100%}
+  .final-cta{
+    margin-top:10px;padding:32px 22px 28px;
+    display:flex;flex-direction:column;align-items:stretch;gap:20px;text-align:left;
+    min-height:0
+  }
+  .footer-brand{display:flex;justify-content:flex-start}
+  .footer-brand img{width:210px;max-height:100px;object-fit:contain}
+  .footer-copy strong{font-size:25px}
+  .footer-copy>span{font-size:16px}
+  .footer-checks{display:grid;gap:7px}
+  .footer-actions{width:100%}
+  .footer-primary,.footer-demo{width:100%;min-height:54px}
+}
