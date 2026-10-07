@@ -1,25 +1,16 @@
-KAABE Dashboard V0.2
+KAABE Login + Dashboard V1
 
-Upload these 3 files to the ROOT of the Kaabe GitHub repository:
+Upload all 4 files to the ROOT of the Kaabe GitHub repo:
+- login.html (replace)
+- dashboard.html (replace)
+- dashboard.js (replace)
+- kaabe-app.css (new)
 
-1. dashboard.html
-   - Replace the existing dashboard.html.
+Do NOT change index.html, signup.html, auth.js, supabase-config.js, or the homepage.
 
-2. dashboard.js
-   - New file.
-
-3. workspace.html
-   - New file.
-
-Do not change index.html, style.css, homepage design, login, signup, or Supabase config.
-
-After GitHub Pages updates:
-Login -> Dashboard
-
-If the logged-in user already owns a business:
-Dashboard shows the business name + Open Workspace.
-
-If no business exists:
-Dashboard shows Set up my business.
-
-Open Workspace -> workspace.html.
+This version:
+- removes the small logo+KAABE pair from Login/Dashboard
+- uses a large KAABE wordmark
+- turns dashboard.html into the full KAABE workspace dashboard
+- keeps existing Supabase login/business lookup working
+- is responsive on mobile

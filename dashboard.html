@@ -1,39 +1,69 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dashboard — KAABE</title>
-  <link rel="stylesheet" href="auth.css">
-</head>
-<body>
-<main class="auth-shell">
-  <a class="auth-brand" href="index.html">
-    <img src="kaabe-logo.png" alt="KAABE"><b>KAABE</b>
-  </a>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — KAABE</title><link rel="stylesheet" href="kaabe-app.css"></head>
+<body class="app-page">
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="side-wordmark" href="index.html">KAABE</a>
+    <nav>
+      <a class="active" href="#">⌂ <span>Overview</span></a>
+      <a href="#">🤖 <span>AI Assistants</span></a>
+      <a href="#">⌘ <span>Automations</span></a>
+      <a href="#">✉ <span>Inbox</span><b>12</b></a>
+      <a href="#">♙ <span>Customers</span></a>
+      <a href="#">◫ <span>Leads</span></a>
+      <a href="#">▣ <span>Appointments</span></a>
+      <a href="#">▤ <span>Knowledge</span></a>
+      <a href="#">◇ <span>Integrations</span></a>
+      <a href="#">⌁ <span>Analytics</span></a>
+      <a href="#">⚙ <span>Settings</span></a>
+    </nav>
+    <div class="business-mini"><small>Your Business</small><strong id="side-business">Loading…</strong><span id="side-zone">Europe/Berlin</span></div>
+  </aside>
 
-  <section class="auth-card">
-    <h1>KAABE Dashboard</h1>
-    <p id="dashboard-status" class="sub">Loading your workspace…</p>
-    <p id="user-email" class="user-email"></p>
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menu-btn">☰</button>
+      <div class="search">⌕ <span>Search anything...</span></div>
+      <div class="account"><span class="bell">♧<i></i></span><span class="avatar" id="avatar">A</span><div><strong id="account-name">Account</strong><small>Business Account</small></div></div>
+    </header>
 
-    <div id="business-info" style="display:none">
-      <label>Your business</label>
-      <h2 id="business-name" style="margin:8px 0 4px"></h2>
-      <p id="business-meta" class="sub" style="margin-bottom:18px"></p>
-    </div>
+    <section class="content">
+      <div class="welcome"><div><h1>Welcome back, <span id="welcome-name">Ahmed</span> 👋</h1><p>Here’s what’s happening with your AI automation today.</p></div><button class="range">▣ &nbsp; Last 7 days⌄</button></div>
 
-    <div class="dashboard-actions">
-      <button id="primary-action" type="button" disabled>Loading…</button>
-      <button id="logout" class="secondary" type="button">Log out</button>
-    </div>
+      <div class="stats">
+        <article><span class="stat-icon purple">💬</span><div><strong>124</strong><small>Conversations</small><em>↑ +32%</em></div></article>
+        <article><span class="stat-icon green">✓</span><div><strong>98</strong><small>AI Handled</small><em>↑ +28%</em></div></article>
+        <article><span class="stat-icon pink">♟</span><div><strong>26</strong><small>New Leads</small><em>↑ +40%</em></div></article>
+        <article><span class="stat-icon blue">▣</span><div><strong>18</strong><small>Appointments</small><em>↑ +50%</em></div></article>
+      </div>
 
-    <div id="auth-message" class="message" role="status"></div>
-  </section>
-</main>
+      <section class="panel"><div class="panel-head"><h2>Your AI Workforce</h2><a href="#">Manage All →</a></div>
+        <div class="agents">
+          <article><div class="agent-title"><span class="wa">☎</span><strong>WhatsApp AI</strong></div><p><i></i> Active</p><button>Open →</button></article>
+          <article><div class="agent-title"><span class="gm">M</span><strong>Email AI</strong></div><p><i></i> Active</p><button>Open →</button></article>
+          <article><div class="agent-title"><span class="ph">☎</span><strong>AI Receptionist</strong></div><p><i></i> Ready</p><button>Open →</button></article>
+          <article><div class="agent-title"><span class="cal">▣</span><strong>Appointment AI</strong></div><p><i></i> Active</p><button>Open →</button></article>
+          <article><div class="agent-title"><span class="sup">💬</span><strong>Support AI</strong></div><p><i></i> Ready</p><button>Open →</button></article>
+          <article><div class="agent-title"><span class="rev">★</span><strong>Review Follow-up</strong></div><p><i></i> Ready</p><button>Open →</button></article>
+        </div>
+      </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-<script src="dashboard.js"></script>
-</body>
-</html>
+      <div class="lower">
+        <section class="panel conversations"><div class="panel-head"><h2>Recent Conversations</h2><a href="#">View all →</a></div>
+          <div class="row"><span class="wa">☎</span><div><strong>New customer inquiry</strong><small>Hi, I want to book an appointment…</small></div><time>10:24</time></div>
+          <div class="row"><span class="gm">M</span><div><strong>Quotation request</strong><small>Can you send me a price list?</small></div><time>09:18</time></div>
+          <div class="row"><span class="ph">☎</span><div><strong>Missed call</strong><small>AI follow-up ready</small></div><time>08:41</time></div>
+        </section>
+        <section class="panel quick"><div class="panel-head"><h2>Quick Actions</h2></div>
+          <button>🤖 Create AI Assistant <span>→</span></button><button>⌘ Build Automation <span>→</span></button>
+          <button>▤ Add Knowledge <span>→</span></button><button>◇ Connect Integration <span>→</span></button>
+        </section>
+      </div>
+      <button class="logout" id="logout">Log out</button>
+      <div id="auth-message" class="message"></div>
+    </section>
+  </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="dashboard.js"></script>
+</body></html>
