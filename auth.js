@@ -1,0 +1,56 @@
+const client = window.kaabeSupabase;
+const messageEl = document.querySelector("#auth-message");
+const form = document.querySelector("#auth-form");
+
+function showMessage(text, type = "error") {
+  if (!messageEl) return;
+  messageEl.textContent = text;
+  messageEl.className = "message show " + type;
+}
+
+async function redirectIfSignedIn() {
+  const { data } = await client.auth.getSession();
+  if (data.session && !location.pathname.endsWith("/dashboard.html")) {
+    location.href = "dashboard.html";
+  }
+}
+
+if (form) {
+  redirectIfSignedIn();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const submit = form.querySelector('button[type="submit"]');
+    submit.disabled = true;
+    messageEl.className = "message";
+    try {
+      if (form.dataset.mode === "signup") {
+        const { data, error } = await client.auth.signUp({
+          email: form.email.value.trim(),
+          password: form.password.value,
+          options: {
+            data: { full_name: form.full_name.value.trim() },
+            emailRedirectTo: new URL("login.html", location.href).href
+          }
+        });
+        if (error) throw error;
+        if (data.session) {
+          location.href = "dashboard.html";
+          return;
+        }
+        showMessage("Account created. Check your email to confirm your account, then log in.", "success");
+        form.reset();
+      } else {
+        const { error } = await client.auth.signInWithPassword({
+          email: form.email.value.trim(),
+          password: form.password.value
+        });
+        if (error) throw error;
+        location.href = "dashboard.html";
+      }
+    } catch (error) {
+      showMessage(error.message || "Something went wrong. Please try again.");
+    } finally {
+      submit.disabled = false;
+    }
+  });
+}
