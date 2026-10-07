@@ -1,0 +1,1 @@
+Replace ONLY index.html, style.css and app.js in the root of your Kaabe GitHub repository. Keep all other files unchanged.
