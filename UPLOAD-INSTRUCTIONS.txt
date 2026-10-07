@@ -1,19 +1,14 @@
-KAABE Authentication V0.1
+KAABE HOMEPAGE V0.3 CLEAN FIX
 
-Upload these files to the ROOT of the Kaabe GitHub repository:
-- login.html
-- signup.html
-- dashboard.html
-- auth.css
-- auth.js
-- supabase-config.js
+Replace these THREE existing root files in GitHub:
+1. index.html
+2. style.css
+3. app.js
 
-Do NOT upload this ZIP itself as the website code; extract it first.
+Do NOT append this CSS to the old file. Replace the whole three files.
 
-IMPORTANT:
-This package does not overwrite index.html yet, so the existing live homepage stays unchanged.
-After upload, test:
-https://ahmedmousa909.github.io/Kaabe/signup.html
-https://ahmedmousa909.github.io/Kaabe/login.html
+Keep login.html, signup.html, dashboard.html, auth.css, auth.js,
+supabase-config.js, logo and assets unchanged.
 
-The next step will connect the existing homepage Login/Get Started buttons after authentication is verified.
+After GitHub Pages deploys, close the old browser tab and reopen the site
+(or hard refresh) so cached CSS is not reused.
