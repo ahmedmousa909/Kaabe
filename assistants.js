@@ -47,14 +47,29 @@ async function toggleAgent(id){
   a.status=status; render();
 }
 async function createFromTemplate(key){
-  if(!business)return;
-  const t=templates[key]; if(!t)return;
+  if(!business){ alert("Business is still loading. Try again in a moment."); return false; }
+  const t=templates[key]; if(!t)return false;
+
+  // One assistant per template/type in V1.
+  const existing=agents.find(a=>a.type===t.type);
+  if(existing){
+    $("#agent-modal")?.classList.remove("open");
+    const card=document.querySelector(`[data-id="${existing.id}"]`);
+    card?.scrollIntoView({behavior:"smooth",block:"center"});
+    card?.classList.add("agent-highlight");
+    setTimeout(()=>card?.classList.remove("agent-highlight"),1400);
+    alert(t.name+" already exists. Use Configure to edit it.");
+    return false;
+  }
+
   const {data,error}=await client.from("agents").insert({
     business_id:business.id,name:t.name,type:t.type,status:"paused",
     description:t.description,settings:{tone:"professional",reply_mode:"approval_required"}
   }).select().single();
-  if(error){alert("Could not create assistant: "+error.message);return}
+
+  if(error){alert("Could not create assistant: "+error.message);return false}
   agents.push(data); render(); $("#agent-modal")?.classList.remove("open");
+  return true;
 }
 (async()=>{
   const{data,error}=await client.auth.getSession();
