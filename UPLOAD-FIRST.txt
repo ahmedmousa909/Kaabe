@@ -1,0 +1,10 @@
+KAABE V2
+Upload these files to the ROOT of the GitHub Kaabe repository and replace files with the same names.
+Keep kaabe-logo.png in the repository.
+
+Fixes:
+1. Login/signup pages: branding logo/wordmark removed.
+2. Dashboard: KAABE logo is visible in sidebar and mobile topbar.
+3. Homepage mobile: horizontal page dragging/overflow locked.
+4. Pricing cards stay inside the viewport on mobile.
+5. Dashboard authentication/business loading preserved.
