@@ -87,3 +87,24 @@ document.addEventListener("click", async (e)=>{
   try{ await createFromTemplate(btn.dataset.template); }
   finally{ btn.dataset.busy="0"; btn.textContent=old; }
 });
+
+// Direct mobile-safe handler used by template buttons.
+window.kaabeCreateAgent=async function(key,btn){
+  if(!business){
+    alert("Business is still loading. Close this window and try again in a moment.");
+    return;
+  }
+  if(!templates[key]){
+    alert("Unknown assistant template.");
+    return;
+  }
+  const old=btn?.textContent||"Create";
+  if(btn){btn.disabled=true;btn.textContent="Creating…";}
+  try{
+    await createFromTemplate(key);
+  }catch(err){
+    alert("Create failed: "+(err?.message||String(err)));
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent=old;}
+  }
+};
