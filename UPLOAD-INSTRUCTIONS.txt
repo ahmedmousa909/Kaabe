@@ -1,19 +1,13 @@
-KAABE Authentication V0.1
+KAABE Business Onboarding V0.1
 
-Upload these files to the ROOT of the Kaabe GitHub repository:
-- login.html
-- signup.html
-- dashboard.html
-- auth.css
-- auth.js
-- supabase-config.js
+Upload these to the ROOT of your GitHub Kaabe repository:
+1. onboarding.html (new)
+2. onboarding.js (new)
+3. dashboard.html (replace current dashboard.html)
 
-Do NOT upload this ZIP itself as the website code; extract it first.
+Then open auth.css in GitHub and paste the contents of ADD-TO-auth.css.txt at the very bottom.
 
-IMPORTANT:
-This package does not overwrite index.html yet, so the existing live homepage stays unchanged.
-After upload, test:
-https://ahmedmousa909.github.io/Kaabe/signup.html
-https://ahmedmousa909.github.io/Kaabe/login.html
+Do not change index.html or the homepage design.
 
-The next step will connect the existing homepage Login/Get Started buttons after authentication is verified.
+Test:
+Login -> Dashboard -> Set up my business -> enter Business name/language/timezone -> Create workspace.

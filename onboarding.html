@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Set up your business — KAABE</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<main class="auth-shell">
+  <a class="auth-brand" href="index.html"><img src="kaabe-logo.png" alt="KAABE"><b>KAABE</b></a>
+  <section class="auth-card">
+    <h1>Set up your business</h1>
+    <p class="sub">Create your KAABE workspace. You can change these details later.</p>
+
+    <form id="business-form">
+      <label for="business_name">Business name</label>
+      <input id="business_name" name="business_name" type="text" maxlength="120" required>
+
+      <label for="language">Language</label>
+      <select id="language" name="language" required>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="so">Soomaali</option>
+      </select>
+
+      <label for="timezone">Timezone</label>
+      <select id="timezone" name="timezone" required>
+        <option value="Europe/Berlin">Europe/Berlin</option>
+        <option value="Africa/Mogadishu">Africa/Mogadishu</option>
+        <option value="UTC">UTC</option>
+      </select>
+
+      <button type="submit">Create workspace</button>
+      <div id="auth-message" class="message" role="status"></div>
+    </form>
+
+    <a class="back" href="dashboard.html">← Back to dashboard</a>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="onboarding.js"></script>
+</body>
+</html>

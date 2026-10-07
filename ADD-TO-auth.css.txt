@@ -1,0 +1,4 @@
+
+/* KAABE Business Onboarding V0.1 */
+select{width:100%;padding:14px 15px;border-radius:12px;border:1px solid #29415d;background:#091827;color:#fff;font:inherit;outline:none}
+select:focus{border-color:#55d6a9;box-shadow:0 0 0 3px rgba(85,214,169,.12)}
