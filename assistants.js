@@ -73,4 +73,17 @@ const modal=$("#agent-modal");
 $("#create-agent")?.addEventListener("click",()=>modal?.classList.add("open"));
 $("#modal-close")?.addEventListener("click",()=>modal?.classList.remove("open"));
 modal?.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("open")});
-$$("[data-template]").forEach(b=>b.addEventListener("click",()=>createFromTemplate(b.dataset.template)));
+
+
+// Robust template click handler (works for taps on button text/icons too)
+document.addEventListener("click", async (e)=>{
+  const btn=e.target.closest?.("[data-template]");
+  if(!btn) return;
+  e.preventDefault();
+  if(btn.dataset.busy==="1") return;
+  btn.dataset.busy="1";
+  const old=btn.textContent;
+  btn.textContent="Creating…";
+  try{ await createFromTemplate(btn.dataset.template); }
+  finally{ btn.dataset.busy="0"; btn.textContent=old; }
+});
