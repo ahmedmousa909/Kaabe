@@ -1,17 +1,15 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Configure AI Assistant — KAABE</title><link rel="stylesheet" href="kaabe-app.css"><link rel="stylesheet" href="assistant-config.css"></head><body class="app-page">
 <main class="config-wrap"><a class="back" href="assistants.html">← AI Assistants</a><section class="config-card">
-<p class="eyebrow">KAABE AI WORKFORCE</p><h1>Configure Assistant</h1><p class="muted">Settings are saved securely to your Kaabe business.</p>
-<div id="loading">Loading…</div>
+<div class="config-head"><div><p class="eyebrow">KAABE AI WORKFORCE</p><h1>Configure Assistant</h1><p class="muted">Control how this assistant behaves for your business.</p></div><span id="status-pill" class="status-pill">Loading</span></div>
+<div id="loading">Loading assistant…</div>
 <form id="agent-form" hidden>
 <label>Assistant name<input id="agent-name" required maxlength="80"></label>
-<label>Type<input id="agent-type" disabled></label>
-<label>Instructions<textarea id="agent-instructions" rows="8" placeholder="Explain how this assistant should behave, what it should do, and what it must avoid."></textarea></label>
-<div class="two">
-<label>Tone<select id="agent-tone"><option value="professional">Professional</option><option value="friendly">Friendly</option><option value="concise">Concise</option></select></label>
-<label>Reply mode<select id="reply-mode"><option value="draft_only">Draft Only</option><option value="approval_required">Approval Required</option><option value="auto_reply">Auto Reply</option></select></label>
-</div>
+<label>Assistant type<input id="agent-type" disabled></label>
+<label>Instructions / System Prompt<textarea id="agent-instructions" rows="9" placeholder="Example: You are the customer support assistant for our business. Answer clearly, use our Knowledge Base, and never invent prices or opening hours."></textarea><small class="hint">Tell the assistant what it should do, how it should speak, and what it must avoid.</small></label>
+<div class="two"><label>Tone<select id="agent-tone"><option value="professional">Professional</option><option value="friendly">Friendly</option><option value="concise">Concise</option><option value="warm">Warm</option></select></label>
+<label>Reply mode<select id="reply-mode"><option value="draft_only">Draft Only</option><option value="approval_required">Approval Required</option><option value="auto_reply">Auto Reply</option></select></label></div>
 <label>Status<select id="agent-status"><option value="paused">Paused</option><option value="active">Active</option></select></label>
-<div class="actions"><button type="submit" class="save">Save Changes</button><button type="button" id="delete-agent" class="danger">Delete Assistant</button></div>
-<p id="save-state"></p>
-</form></section></main>
+<div class="mode-note" id="mode-note"></div>
+<div class="actions"><button type="submit" class="save" id="save-btn">Save Changes</button><button type="button" id="delete-agent" class="danger">Delete Assistant</button></div>
+<p id="save-state"></p></form></section></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="assistant-config.js"></script></body></html>
