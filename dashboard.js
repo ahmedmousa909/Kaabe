@@ -10,3 +10,10 @@ $("#quick-create-assistant")?.addEventListener("click",()=>location.href="assist
 $$("[data-agent]").forEach(b=>b.addEventListener("click",()=>location.href=`assistants.html?focus=${encodeURIComponent(b.dataset.agent)}`));
 $$("[data-coming]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();closeSidebar();toast(el.dataset.coming+" is the next Kaabe module to connect.");}));
 $("#range-btn")?.addEventListener("click",()=>toast("Dashboard range: Last 7 days"));
+document.getElementById("nav-knowledge")?.addEventListener("click",(e)=>{
+  e.preventDefault();
+  window.location.assign("./knowledge.html");
+});
+document.getElementById("quick-add-knowledge")?.addEventListener("click",()=>{
+  window.location.assign("./knowledge.html?create=1");
+});
