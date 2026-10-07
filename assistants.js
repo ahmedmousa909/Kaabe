@@ -123,3 +123,9 @@ window.kaabeCreateAgent=async function(key,btn){
     if(btn){btn.disabled=false;btn.textContent=old;}
   }
 };
+
+function closeSidebar(){document.querySelector("#sidebar")?.classList.remove("open");document.querySelector("#sidebar-backdrop")?.classList.remove("open")}
+document.querySelector("#menu-btn")?.addEventListener("click",()=>document.querySelector("#sidebar-backdrop")?.classList.toggle("open"));
+document.querySelector("#sidebar-close")?.addEventListener("click",closeSidebar);
+document.querySelector("#sidebar-backdrop")?.addEventListener("click",closeSidebar);
+document.querySelectorAll("[data-coming]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();closeSidebar();alert(el.dataset.coming+" module comes next.");}));
