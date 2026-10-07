@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Workspace — KAABE</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<main class="auth-shell">
+  <a class="auth-brand" href="dashboard.html">
+    <img src="kaabe-logo.png" alt="KAABE"><b>KAABE</b>
+  </a>
+
+  <section class="auth-card">
+    <h1 id="workspace-name">KAABE Workspace</h1>
+    <p class="sub">Your AI workforce will live here.</p>
+
+    <div class="dashboard-actions">
+      <button id="agents" type="button">AI Agents — Coming next</button>
+      <button id="back" class="secondary" type="button">Back to Dashboard</button>
+    </div>
+
+    <div id="auth-message" class="message" role="status"></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+const client = window.kaabeSupabase;
+(async () => {
+  const {data} = await client.auth.getSession();
+  if (!data.session) { location.href = "login.html"; return; }
+
+  const id = sessionStorage.getItem("kaabe_business_id");
+  if (!id) { location.href = "dashboard.html"; return; }
+
+  const {data: business, error} = await client
+    .from("businesses")
+    .select("name")
+    .eq("id", id)
+    .single();
+
+  if (error || !business) { location.href = "dashboard.html"; return; }
+  document.querySelector("#workspace-name").textContent = business.name + " Workspace";
+})();
+document.querySelector("#back").onclick = () => location.href = "dashboard.html";
+document.querySelector("#agents").onclick = () => {
+  const m = document.querySelector("#auth-message");
+  m.textContent = "AI Agents are the next KAABE build step.";
+  m.className = "message show success";
+};
+</script>
+</body>
+</html>

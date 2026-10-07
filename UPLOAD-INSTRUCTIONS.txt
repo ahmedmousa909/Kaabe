@@ -1,13 +1,25 @@
-KAABE Business Onboarding V0.1
+KAABE Dashboard V0.2
 
-Upload these to the ROOT of your GitHub Kaabe repository:
-1. onboarding.html (new)
-2. onboarding.js (new)
-3. dashboard.html (replace current dashboard.html)
+Upload these 3 files to the ROOT of the Kaabe GitHub repository:
 
-Then open auth.css in GitHub and paste the contents of ADD-TO-auth.css.txt at the very bottom.
+1. dashboard.html
+   - Replace the existing dashboard.html.
 
-Do not change index.html or the homepage design.
+2. dashboard.js
+   - New file.
 
-Test:
-Login -> Dashboard -> Set up my business -> enter Business name/language/timezone -> Create workspace.
+3. workspace.html
+   - New file.
+
+Do not change index.html, style.css, homepage design, login, signup, or Supabase config.
+
+After GitHub Pages updates:
+Login -> Dashboard
+
+If the logged-in user already owns a business:
+Dashboard shows the business name + Open Workspace.
+
+If no business exists:
+Dashboard shows Set up my business.
+
+Open Workspace -> workspace.html.
