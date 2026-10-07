@@ -1,0 +1,5 @@
+1. Supabase -> Edge Functions -> create 'kaabe-ai'.
+2. Put supabase/functions/kaabe-ai/index.ts into that function and Deploy.
+3. Supabase Edge Function Secrets -> add OPENAI_API_KEY and paste your key there. Never GitHub.
+4. Upload ai-test.html and ai-test.js to Kaabe GitHub root.
+5. Open /Kaabe/ai-test.html and test WhatsApp AI.
