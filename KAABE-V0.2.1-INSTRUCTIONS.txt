@@ -1,0 +1,15 @@
+KAABE V0.2.1 HOTFIX
+
+1. Open the existing style.css in GitHub.
+2. Go to the very bottom.
+3. Paste ALL contents of style-hotfix-v0.2.1.css at the end.
+4. Commit changes.
+5. Refresh GitHub Pages (if cached, close/reopen or hard refresh).
+
+This patch only fixes:
+- white overflow area on the right
+- duplicated mobile menu on desktop
+- mobile header: logo + hamburger only
+- language dropdown hidden until clicked
+
+It does not change homepage content.

@@ -1,0 +1,32 @@
+
+/* KAABE V0.2.1 — header + viewport hotfix only */
+html,body{width:100%;max-width:100%;margin:0;overflow-x:hidden}
+header{width:100%;max-width:100%;position:sticky}
+.mobile-nav{display:none!important}
+
+/* Keep desktop navigation on one clean row */
+@media (min-width:801px){
+  header{display:flex;align-items:center}
+  .brand{flex:0 0 auto}
+  .brand img{width:120px;max-width:120px}
+  nav{display:flex!important;flex:1 1 auto;min-width:0}
+  .nav-actions{display:flex!important;flex:0 0 auto}
+  .menu{display:none!important}
+  .mobile-nav{display:none!important}
+  .lang-menu{display:none!important}
+  .language.open .lang-menu{display:grid!important}
+}
+
+/* Phone: logo + hamburger only until opened */
+@media (max-width:800px){
+  header{padding:8px 18px!important}
+  header>nav,header>.nav-actions{display:none!important}
+  .brand{display:flex!important;flex:0 0 auto;min-width:0!important}
+  .brand img{width:125px!important;max-width:125px!important;height:58px!important;object-fit:contain!important;object-position:left center!important}
+  .menu{display:block!important;margin-left:auto!important}
+  .mobile-nav{display:none!important}
+  .mobile-nav.open{display:grid!important}
+  .mobile-nav.open a{display:flex}
+  main,section,footer{max-width:100%}
+  .hero,.trusted,.team,.how,.pricing,footer{width:100%}
+}
