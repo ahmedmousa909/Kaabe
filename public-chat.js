@@ -9,7 +9,7 @@
 const launch=document.createElement('button');launch.id='kaabe-chat-launch';launch.textContent='✦ Ask KAABE AI';launch.setAttribute('aria-label','Open KAABE assistant');
 const panel=document.createElement('section');panel.id='kaabe-public-chat';panel.setAttribute('aria-label','KAABE assistant');panel.innerHTML='<header><strong>✦ KAABE AI Assistant</strong><button type="button" aria-label="Close chat">×</button></header><div id="kaabe-public-messages" role="log" aria-live="polite"></div><form><input aria-label="Your question" placeholder="Ask about KAABE..." maxlength="500" required><button type="submit">Send</button></form><div class="note">KAABE AI · Multilingual assistant</div>';document.body.append(launch,panel);
 const messages=panel.querySelector('#kaabe-public-messages');function add(text,who){const e=document.createElement('div');e.className='msg '+who;e.textContent=text;messages.append(e);messages.scrollTop=messages.scrollHeight}
-add('Ku soo dhawoow KAABE! I weydii adeegyada, qiimaha, ama sida loo bilaabo. You can also ask in English or Deutsch.','bot');
+add('Welcome to KAABE AI! 👋 I'm here to help you explore KAABE, create your account, and learn about our services. Ask me in any language you prefer.','bot');
 launch.onclick=()=>{panel.classList.toggle('open');if(panel.classList.contains('open'))panel.querySelector('input').focus()};panel.querySelector('header button').onclick=()=>panel.classList.remove('open');
 const history=[];let busy=false;
 panel.querySelector('form').onsubmit=async e=>{
