@@ -1,0 +1,1 @@
+Upload dashboard-ai.js to the GitHub repository root. In dashboard.html insert <script src="dashboard-ai.js?v=1"></script> just before </body>. Do not replace dashboard.html or dashboard.js.
