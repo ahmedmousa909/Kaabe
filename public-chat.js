@@ -7,10 +7,22 @@
 #kaabe-public-chat .note{font-size:11px;color:#a4bad5;padding:0 12px 10px;background:#102743}
 `;document.head.append(css);
 const launch=document.createElement('button');launch.id='kaabe-chat-launch';launch.textContent='✦ Ask KAABE AI';launch.setAttribute('aria-label','Open KAABE assistant');
-const panel=document.createElement('section');panel.id='kaabe-public-chat';panel.setAttribute('aria-label','KAABE assistant');panel.innerHTML='<header><strong>✦ KAABE AI Assistant</strong><button type="button" aria-label="Close chat">×</button></header><div id="kaabe-public-messages" role="log" aria-live="polite"></div><form><input aria-label="Your question" placeholder="Ask about KAABE..." maxlength="500" required><button type="submit">Send</button></form><div class="note">Website information assistant · AI chat connection coming soon</div>';document.body.append(launch,panel);
+const panel=document.createElement('section');panel.id='kaabe-public-chat';panel.setAttribute('aria-label','KAABE assistant');panel.innerHTML='<header><strong>✦ KAABE AI Assistant</strong><button type="button" aria-label="Close chat">×</button></header><div id="kaabe-public-messages" role="log" aria-live="polite"></div><form><input aria-label="Your question" placeholder="Ask about KAABE..." maxlength="500" required><button type="submit">Send</button></form><div class="note">KAABE AI · Multilingual assistant</div>';document.body.append(launch,panel);
 const messages=panel.querySelector('#kaabe-public-messages');function add(text,who){const e=document.createElement('div');e.className='msg '+who;e.textContent=text;messages.append(e);messages.scrollTop=messages.scrollHeight}
 add('Ku soo dhawoow KAABE! I weydii adeegyada, qiimaha, ama sida loo bilaabo. You can also ask in English or Deutsch.','bot');
 launch.onclick=()=>{panel.classList.toggle('open');if(panel.classList.contains('open'))panel.querySelector('input').focus()};panel.querySelector('header button').onclick=()=>panel.classList.remove('open');
-function answer(q){const x=q.toLowerCase();if(/price|pricing|cost|qiim|lacag|preis|kosten|€/.test(x))return 'KAABE website lists Starter €29/month, Professional €59/month, and Business €99/month. See the Pricing section for plan details.';if(/max|muxuu|maxuu|qab|kaabe|whatsapp|email|gmail|booking|appointment|ballan|autom|service|adeeg|funktion/.test(x))return 'KAABE waa madal AI Automation ah oo loo dhisayo ganacsiyada. Waxay ka caawin doontaa ka jawaabista WhatsApp iyo email, ballamaha, iyo adeegga macaamiisha. Qaar ka mid ah isku-xirnaanta weli waa la dhisayaa.';if(/start|sign|account|bilaab|registr|anmeld/.test(x))return 'To get started, select Get Started on this website and create your KAABE account.';if(/somali|soomaali|af somali/.test(x))return 'Haa, waan ku caawin karaa xogta KAABE. Waxaad i weydiin kartaa adeegyada, qiimaha, iyo sida akoon loo sameeyo.';return 'Waxaan kaa caawin karaa su’aalaha ku saabsan KAABE, qiimaha iyo isdiiwaangelinta. AI-ga dadweynaha weli lama xirin. Maxaad rabtaa inaad ogaato?'}
-panel.querySelector('form').onsubmit=e=>{e.preventDefault();const input=panel.querySelector('input');const q=input.value.trim();if(!q)return;input.value='';add(q,'user');add(answer(q),'bot')};
+const history=[];let busy=false;
+panel.querySelector('form').onsubmit=async e=>{
+e.preventDefault();if(busy)return;
+const input=panel.querySelector('input'),q=input.value.trim();if(!q)return;
+input.value='';add(q,'user');const send=panel.querySelector('form button');busy=true;send.disabled=true;
+const pending=document.createElement('div');pending.className='msg bot';pending.textContent='KAABE AI is thinking…';messages.append(pending);messages.scrollTop=messages.scrollHeight;
+try{
+const response=await fetch('https://zrjuflogyaxortzktmbh.supabase.co/functions/v1/kaabe-public-ai',{method:'POST',headers:{'Content-Type':'application/json','apikey':'sb_publishable_xUVlWrvr2wjdg9k6_efleQ_6VaqAvsx'},body:JSON.stringify({message:q,history:history.slice(-6)})});
+const data=await response.json();
+if(!response.ok||!data.reply)throw new Error(data.error||'AI service unavailable');
+pending.textContent=data.reply;history.push({role:'user',content:q},{role:'assistant',content:data.reply});if(history.length>8)history.splice(0,history.length-8);
+}catch(err){pending.textContent='KAABE AI is temporarily unavailable. Please try again later. / KAABE AI hadda lama heli karo. Fadlan mar kale isku day.';console.warn('KAABE public AI:',err.message)}
+finally{busy=false;send.disabled=false}
+};
 })();
