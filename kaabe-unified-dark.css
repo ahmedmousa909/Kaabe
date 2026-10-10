@@ -1,0 +1,56 @@
+/* KAABE unified midnight + orange design system, visual-only layer */
+:root{color-scheme:dark;--kaabe-bg:#08090b;--kaabe-surface:#111317;--kaabe-card:#17191e;--kaabe-border:#38302a;--kaabe-orange:#ff8716;--kaabe-gold:#ffb02f;--kaabe-text:#f7f7f8;--kaabe-muted:#a9abb4}
+html{background:#08090b}
+body,body.app-page{background:#08090b!important;color:#f7f7f8!important}
+body:not(.app-page) main,body:not(.app-page) section:not(.hero),body:not(.app-page) footer{color:#f7f7f8}
+body.app-page .content,body.app-page .automation-main,body.app-page .config-wrap{background:#08090b!important;color:#f7f7f8!important}
+.app-page .sidebar,.automation-nav{background:#0c0d10!important;border-color:#3a281b!important}
+.app-page .topbar,header.site-header{background:#0d0e11!important;color:#fff!important;border-color:#352b22!important}
+.app-page .welcome h1,.app-page h1,.app-page h2,.app-page h3,.app-page h4,.app-page strong,.automation-main h1,.automation-main h2,.automation-main h3,.config-wrap h1,.config-wrap h2{color:#fff!important}
+.app-page .welcome p,.app-page .stats small,.app-page .row small,.app-page .agents p,.app-page .assistant-card>p,.app-page .kb-item p,.app-page .knowledge-head p,.app-page .assist-head p,.automation-main p,.app-page .panel p{color:#b2b3bd!important}
+.app-page .panel,.app-page .stats article,.app-page .agents article,.app-page .assistant-summary article,.app-page .knowledge-stats article,.app-page .assistant-card,.app-page .kb-item,.app-page .knowledge-grid .empty,.app-page .config-card,.automation-main .template,.automation-main .panel,.automation-main .workflow,.app-page .agent-modal .modal-card,.app-page .kb-modal .kb-card{background:linear-gradient(140deg,#191a1f,#101115)!important;color:#f7f7f8!important;border:1px solid #39302b!important;box-shadow:0 8px 25px #0004!important}
+.app-page .assistant-summary strong,.app-page .knowledge-stats strong,.app-page .assistant-card h2,.app-page .kb-item h3,.app-page .empty-agents h3,.app-page .knowledge-stats article,.app-page .assistant-summary article{color:#fff!important}
+.app-page .assistant-summary span,.app-page .knowledge-stats span,.app-page .assistant-meta,.app-page .kb-item p{color:#b6b8c0!important}
+.app-page .assistant-meta span,.app-page .kb-item .cat{background:#322113!important;border-color:#7a441c!important;color:#ffb86b!important}
+.app-page .status.ready{background:#252b35!important;color:#c4d1df!important}
+.app-page .status.active{background:#133726!important;color:#77e7ac!important}
+.app-page .range,.app-page .search,.app-page .agents button,.app-page .quick button,.app-page .card-actions button,.app-page .modal-close,.app-page .kb-close,.automation-main .btn.secondary{background:#222329!important;color:#f4f4f4!important;border:1px solid #4b4039!important}
+.app-page input,.app-page select,.app-page textarea,.automation-main input,.automation-main select,.automation-main textarea,.config-wrap input,.config-wrap select,.config-wrap textarea{background:#1b1d22!important;color:#fff!important;border:1px solid #53402e!important}
+.app-page input::placeholder,.app-page textarea::placeholder{color:#92939c!important}
+.app-page .create-agent,.app-page .primary-action,.app-page .card-actions .configure,.app-page button.primary,.automation-main .btn:not(.secondary),.config-wrap button:not(.danger){background:linear-gradient(110deg,#ffb332,#ff7610)!important;color:#1b1008!important;border:1px solid #f88a22!important;box-shadow:0 6px 19px #fb7c1426!important}
+.app-page .panel-head a,.app-page .assist-head .eyebrow,.app-page .knowledge-head .eyebrow,.automation-main .eyebrow{color:#ff9a2d!important}
+.app-page .sidebar nav a.active,.automation-nav a.selected{background:linear-gradient(105deg,#ff9a21,#ab4e0a)!important;color:#fff!important}
+.app-page .business-mini{background:#22180f!important}
+.app-page .topbar .account small{color:#c7c1bb!important}
+.app-page .agent-modal .modal-card p,.app-page .kb-card label,.app-page .kb-item small{color:#c6c6cc!important}
+.app-page .template-list button{background:#222025!important;color:#f5f5f5!important;border-color:#58412d!important}
+.app-page .kb-actions button:not(.delete){background:linear-gradient(110deg,#ffb332,#ff7610)!important;color:#1b1008!important}
+.app-page .card-actions .toggle.active{background:#4c1f24!important;color:#ffb6ba!important}
+.app-page .kb-item:hover,.app-page .assistant-card:hover{border-color:#f7902b!important}
+.app-page .mobile-dashboard-brand img,.app-page .dashboard-brand img{object-fit:contain}
+.app-page .kaabe-brand-name{color:#fff!important}
+body:not(.app-page) .trusted,body:not(.app-page) .team,body:not(.app-page) .how,body:not(.app-page) .pricing,body:not(.app-page) .final-cta{background:#0b0c0e!important;color:#fff!important}
+body:not(.app-page) .trusted>small,body:not(.app-page) .trusted .logo-row div,body:not(.app-page) .team h2,body:not(.app-page) .how h2,body:not(.app-page) .pricing h2,body:not(.app-page) .team-copy p,body:not(.app-page) .benefits b,body:not(.app-page) .steps b{color:#fff!important}
+body:not(.app-page) .trusted .logo-row div{background:#141519!important;border:1px solid #3b3029!important;border-radius:12px;padding:8px 12px}
+body:not(.app-page) .person-card{background:radial-gradient(circle at center,#3a1a08,#100d0b 70%)!important;border:1px solid #603310}
+body:not(.app-page) .float-card{background:#17181b!important;color:#fff!important;border:1px solid #854718!important}
+body:not(.app-page) .float-card b{color:#fff!important}
+body:not(.app-page) .float-card small,body:not(.app-page) .benefits small,body:not(.app-page) .steps small,body:not(.app-page) .pricing>p,body:not(.app-page) .how>p{color:#b6b7bd!important}
+body:not(.app-page) .benefits div{background:transparent!important}
+body:not(.app-page) .plans article{background:#15161a!important;color:#f8f8f8!important;border:1px solid #4c3625!important}
+body:not(.app-page) .plans article b,body:not(.app-page) .plans article h3,body:not(.app-page) .plans article p{color:#f5f5f5!important}
+body:not(.app-page) .plans article a{background:#202126!important;color:#fff!important;border:1px solid #554331!important}
+body:not(.app-page) .plans article.popular a{background:linear-gradient(110deg,#ffb333,#ff7810)!important;color:#160d06!important}
+body:not(.app-page) .steps div{background:#131417!important;border-radius:12px;padding:10px}
+body:not(.app-page) .footer-brand strong{color:#fff!important}
+body:not(.app-page) .phone{background:#121316!important;color:#fff!important}
+body:not(.app-page) .phone .bubble.ai,body:not(.app-page) .phone .slot,body:not(.app-page) .phone-input{background:#222328!important;color:#f6f6f6!important}
+body:not(.app-page) .phone .bubble.me{color:#1c110a!important}
+body:not(.app-page) .laptop .screen,body:not(.app-page) .dash-main{background:#15161a!important;color:#fff!important}
+body:not(.app-page) .dash-main h4,body:not(.app-page) .dash-main .mini-heading{color:#fff!important}
+body:not(.app-page) .dash-main .mini-stats i,body:not(.app-page) .dash-main .mini-agents span{background:#222328!important;color:#fff!important;border-color:#38383e!important}
+body:not(.app-page) .dash-top span:first-child{background:#27282d!important;color:#ddd!important}
+body:not(.app-page) .dash-main .mini-stats small,body:not(.app-page) .dash-main .mini-caption{color:#b4b4bf!important}
+body:not(.app-page) .hero{background:radial-gradient(ellipse at 87% 87%,#702c09,transparent 38%),#08090b!important}
+body:not(.app-page) .logo-row img,body:not(.app-page) .float-card img{background:transparent}
+@media(max-width:800px){body:not(.app-page) .trusted .logo-row div{padding:7px 9px}body:not(.app-page) .team{padding-top:34px!important}body:not(.app-page) .steps div{padding:8px}}
