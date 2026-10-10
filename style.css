@@ -96,3 +96,24 @@ nav a.active,nav a:hover{color:#ffa32a}
 @media(max-width:1000px){.hero{grid-template-columns:1fr 1fr}.hero h1{font-size:clamp(40px,5vw,60px)}.hero-visual{transform:scale(.88);transform-origin:left center}.phone{right:-14%}.logo-row{gap:14px}}
 @media(max-width:800px){header{padding:10px 20px}.brand .spark-icon{width:38px;height:38px}.brand span{font-size:29px}.menu{color:#fff;background:#171717;border-color:#444}.mobile-nav{background:#141414;border-color:#444}.mobile-nav a{color:#fff}.hero{display:block;padding:36px 20px 20px;min-height:0}.hero h1{font-size:clamp(43px,10vw,64px)}.hero p{font-size:15px}.hero ul{gap:12px}.hero-visual{transform:none;min-height:360px;margin-top:22px}.laptop{width:88%;height:310px;left:0;padding:6px;border-width:6px}.screen{font-size:10px}.mini-top b{font-size:11px}.mini-top span{font-size:8px;padding:6px}.screen h4{font-size:13px}.mini-stats{gap:3px}.mini-stats i{font-size:11px;padding:6px 3px}.mini-stats small{font-size:7px}.mini-agents{gap:4px}.mini-agents span{font-size:8px;padding:5px 3px}.mini-agents img{width:17px;height:17px}.mini-agents small{font-size:7px}.phone{right:0;top:78px;width:118px;height:240px;padding:9px 5px;border-width:5px}.phone>b{font-size:9px}.bubble{font-size:9px;margin:8px 0;padding:6px}.trusted{display:block;padding:16px 20px}.logo-row{margin-top:12px;gap:12px 18px}.team{display:block;padding:38px 20px}.person-card{min-height:260px}.float-card{min-width:0;padding:6px}.f1{left:0}.f2{right:0}.team h2{font-size:38px}.benefits{grid-template-columns:repeat(2,minmax(0,1fr))}.benefits div{grid-template-columns:32px 1fr}.benefits img{width:27px;height:27px}.benefits b{font-size:11px}.benefits small{font-size:10px}.steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.how,.pricing{padding:28px 20px}.plans{grid-template-columns:1fr}.final-cta{padding:28px 20px}.footer-brand img{width:52px;height:52px}.footer-brand strong{font-size:27px}}
 @media(max-width:390px){.hero-visual{min-height:310px}.laptop{height:260px}.phone{width:100px;height:210px}.mini-agents span:nth-child(n+4){display:none}.mini-agents{grid-template-columns:repeat(3,1fr)}.hero ul li{max-width:95px}}
+
+
+/* Supplied KAABE icon assets: consistent placement and no distortions */
+.logo-row div{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.logo-row img{width:27px!important;height:27px!important;flex:0 0 27px;object-fit:contain}
+.mini-agents span{display:grid;grid-template-columns:26px minmax(0,1fr);grid-template-rows:auto auto;align-content:center;align-items:center;column-gap:6px;min-width:0;overflow:hidden}
+.mini-agents span img{width:25px!important;height:25px!important;object-fit:contain;grid-column:1;grid-row:1/3}
+.mini-agents span small{grid-column:2;grid-row:2}
+.float-card{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto;align-content:center;align-items:center;gap:2px 8px}
+.float-card img{width:30px!important;height:30px!important;object-fit:contain;grid-column:1;grid-row:1/3}
+.float-card b{grid-column:2;grid-row:1}
+.float-card small{grid-column:2;grid-row:2}
+.benefits div{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto;align-content:start;align-items:center;gap:4px 10px}
+.benefits img{width:38px!important;height:38px!important;object-fit:contain;grid-column:1;grid-row:1/3}
+.benefits b{grid-column:2;grid-row:1}
+.benefits small{grid-column:2;grid-row:2}
+.steps div{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto;gap:4px 9px;align-content:start;align-items:center}
+.steps img{width:37px!important;height:37px!important;object-fit:contain;grid-column:1;grid-row:1/3;margin:0}
+.steps b{grid-column:2;grid-row:1}
+.steps small{grid-column:2;grid-row:2}
+@media(max-width:800px){.mini-agents span{grid-template-columns:18px minmax(0,1fr);gap:2px}.mini-agents span img{width:17px!important;height:17px!important}.float-card img{width:25px!important;height:25px!important}.benefits div{grid-template-columns:31px minmax(0,1fr)}.benefits img{width:28px!important;height:28px!important}.steps div{grid-template-columns:38px minmax(0,1fr)}.steps img{width:33px!important;height:33px!important}}
