@@ -7,3 +7,39 @@
 
 /* KAABE DASHBOARD ICONS FINAL */
 .sidebar nav a>.nav-svg{width:19px;height:19px;min-width:19px;stroke:currentColor}.stat-icon .nav-svg,.agent-title .nav-svg{width:21px;height:21px}.quick button .nav-svg{width:18px;height:18px;vertical-align:-4px;margin-right:8px}.sidebar nav a.active>.nav-svg{stroke:#fff}
+
+
+/* KAABE real dashboard — Spark brand refresh, visuals only */
+.app-page{background:#f7f7f7;color:#161616}
+.app-page .sidebar{background:radial-gradient(circle at 0 100%,#512005 0,transparent 35%),#090a0c;border-right:1px solid #27201c}
+.app-page .dashboard-brand{display:flex;align-items:center;justify-content:flex-start;gap:9px;padding:2px 8px 24px}
+.app-page .dashboard-brand img{width:44px;height:44px;object-fit:contain}
+.app-page .kaabe-brand-name{color:#fff;font-size:31px;font-weight:850;letter-spacing:-1.3px}
+.app-page .sidebar nav a{color:#eee}
+.app-page .sidebar nav a.active{background:linear-gradient(100deg,#ff8e19,#9b4006);color:#fff}
+.app-page .sidebar nav a:hover{background:#302018;color:#fff}
+.app-page .sidebar nav a b{background:#ff7b10}
+.app-page .business-mini{background:#1b1715;border-color:#553019}
+.app-page .business-mini small,.app-page .business-mini span{color:#c3b9af}
+.app-page .topbar{background:#111113;color:#fff;border-bottom:1px solid #272321}
+.app-page .search{background:#fff;color:#888;border:1px solid #e5e5e5}
+.app-page .account small{color:#d1c8c1}
+.app-page .avatar{background:linear-gradient(130deg,#ffb634,#f66a00);color:#151515}
+.app-page .welcome h1{color:#171717}
+.app-page .welcome p{color:#687080}
+.app-page .range,.app-page .logout{background:#fff;border-color:#e5e5e5;color:#252525}
+.app-page .stats article,.app-page .panel{background:#fff;border:1px solid #eee;box-shadow:0 8px 28px #1b130b09;color:#181818}
+.app-page .stats small,.app-page .row small,.app-page .row time{color:#697080}
+.app-page .stats em{color:#07a965}
+.app-page .panel-head a{color:#f4770c}
+.app-page .agents article{background:#fff;border-color:#ededed;box-shadow:0 4px 15px #00000008}
+.app-page .agents p{color:#606875}
+.app-page .agents button,.app-page .quick button{background:#fff;color:#252525;border-color:#e6e6e6}
+.app-page .agents button:hover,.app-page .quick button:hover{border-color:#ff8b21;background:#fff5e9}
+.app-page .rev{background:#ffb400;color:#fff}
+.app-page .menu-btn{background:#221b15;border-color:#774214;color:#fff}
+.app-page .mobile-dashboard-brand{gap:6px}
+.app-page .mobile-dashboard-brand img{width:31px;height:31px}
+.app-page .mobile-dashboard-brand .kaabe-brand-name{font-size:21px}
+.app-page .kaabe-toast{background:#1d1610;border-color:#d66e17}
+@media(max-width:820px){.app-page .sidebar-close{background:#231910;border-color:#75471e}.app-page .sidebar{box-shadow:15px 0 40px #0003}}
