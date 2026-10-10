@@ -117,3 +117,15 @@ nav a.active,nav a:hover{color:#ffa32a}
 .steps b{grid-column:2;grid-row:1}
 .steps small{grid-column:2;grid-row:2}
 @media(max-width:800px){.mini-agents span{grid-template-columns:18px minmax(0,1fr);gap:2px}.mini-agents span img{width:17px!important;height:17px!important}.float-card img{width:25px!important;height:25px!important}.benefits div{grid-template-columns:31px minmax(0,1fr)}.benefits img{width:28px!important;height:28px!important}.steps div{grid-template-columns:38px minmax(0,1fr)}.steps img{width:33px!important;height:33px!important}}
+
+
+/* Animated integrations: transparent icons, clean backgrounds */
+.trusted{display:block;overflow:hidden;position:relative}
+.trusted>small{display:block;margin-bottom:13px}
+.trusted .logo-row{display:flex!important;flex-wrap:nowrap!important;gap:30px;width:max-content;max-width:none;animation:kaabe-integrations-scroll 28s linear infinite!important;will-change:transform}
+.trusted .logo-row:hover{animation-play-state:paused!important}
+.trusted .logo-row div{flex:0 0 auto;display:flex;align-items:center;gap:8px;background:transparent!important;box-shadow:none!important;border:0!important}
+.trusted .logo-row img{display:block;object-fit:contain;width:28px!important;height:28px!important;max-width:28px;background:transparent!important;box-shadow:none!important;border:0!important;mix-blend-mode:normal}
+@keyframes kaabe-integrations-scroll{0%{transform:translateX(0)}100%{transform:translateX(-42%)}}
+@media(max-width:800px){.trusted .logo-row{gap:22px;animation-duration:20s!important}}
+@media(prefers-reduced-motion:reduce){.trusted .logo-row{animation:none!important}}
