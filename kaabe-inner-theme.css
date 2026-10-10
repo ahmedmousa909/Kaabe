@@ -67,3 +67,38 @@ body.app-page{background:#f7f7f8;color:#171717}
 .auth-brand img{width:42px;height:42px;object-fit:contain}
 .auth-brand .kaabe-brand-name{color:#fff;font-size:26px}
 @media(max-width:820px){.app-page .sidebar{box-shadow:15px 0 40px #0003}}
+
+
+/* Repair legacy dark cards and blue CTAs on AI Assistants and Knowledge */
+.app-page .assist-head .eyebrow,.app-page .knowledge-head .eyebrow{color:#e67b16!important}
+.app-page .assist-head>div>p:last-child,.app-page .knowledge-head>div>p:last-child{color:#67717d!important}
+.app-page .create-agent,.app-page .primary-action{background:linear-gradient(110deg,#ffb33b,#ff7910)!important;color:#1b120a!important;border:0!important;box-shadow:0 6px 18px #fa81192b}
+.app-page .assistant-summary article,.app-page .knowledge-stats article{background:#fff!important;border:1px solid #e8e6e3!important;color:#161616!important;box-shadow:0 5px 20px #2413060b}
+.app-page .assistant-summary strong,.app-page .knowledge-stats strong{color:#151515!important}
+.app-page .assistant-summary span,.app-page .knowledge-stats span{color:#626a75!important}
+.app-page .assistant-card,.app-page .kb-item,.app-page .knowledge-grid .empty{background:#fff!important;border:1px solid #e7e5e3!important;color:#181818!important;box-shadow:0 6px 22px #2413060a}
+.app-page .assistant-card h2,.app-page .kb-item h3,.app-page .empty-agents h3{color:#171717!important}
+.app-page .assistant-card>p,.app-page .kb-item p{color:#656d78!important}
+.app-page .assistant-meta span{background:#fff5e9!important;border-color:#f5ddc3!important;color:#9a5517!important}
+.app-page .status.ready{background:#f1f3f6!important;color:#57616f!important}
+.app-page .status.active{background:#e4f9eb!important;color:#16824e!important}
+.app-page .card-actions button{border:1px solid #e9dfd4!important;border-radius:9px!important;padding:10px!important;background:#fff!important;color:#262626!important;font-weight:650!important;cursor:pointer}
+.app-page .card-actions .configure{background:linear-gradient(110deg,#ffb43c,#ff7c12)!important;color:#1a100a!important;border-color:transparent!important}
+.app-page .card-actions .toggle.active{background:#fff1f1!important;color:#a7333b!important}
+.app-page .kb-item .cat{background:#fff1df!important;color:#a85b0e!important}
+.app-page .kb-item:hover,.app-page .assistant-card:hover{border-color:#ffad61!important}
+.app-page .agent-modal .modal-card,.app-page .kb-modal .kb-card{background:#fff!important;color:#181818!important;border:1px solid #e8dcd1!important}
+.app-page .agent-modal .modal-card h2,.app-page .kb-modal .kb-card h2{color:#181818!important}
+.app-page .agent-modal .modal-card p{color:#646b75!important}
+.app-page .template-list button{background:#fff8f0!important;border-color:#f1d9bf!important;color:#27201b!important}
+.app-page .modal-close,.app-page .kb-close{background:#fff1df!important;color:#3b2818!important;border:0!important}
+.app-page .kb-card label{color:#333!important}
+.app-page .kb-card input,.app-page .kb-card select,.app-page .kb-card textarea{background:#fff!important;color:#1a1a1a!important;border:1px solid #e4d7c9!important}
+.app-page .kb-actions button:not(.delete){background:linear-gradient(110deg,#ffb43c,#ff7c12)!important;color:#1b120b!important}
+.app-page .empty-agents{border-color:#f2cfa9!important;color:#6a7179!important}
+.app-page .agent-highlight{outline-color:#ff9a37!important;box-shadow:0 0 0 5px #ffb24c20!important}
+.app-page .assistant-icon{color:#fff}
+.app-page .mobile-dashboard-brand{display:flex;align-items:center;gap:8px;min-width:0}
+.app-page .mobile-dashboard-brand img{display:block;object-fit:contain;flex-shrink:0;width:34px;height:34px}
+.app-page .mobile-dashboard-brand .kaabe-brand-name{color:#fff!important;font-size:23px;font-weight:850;white-space:nowrap}
+@media(max-width:620px){.app-page .assistant-summary article,.app-page .knowledge-stats article{min-height:94px}.app-page .assistant-card{min-height:240px}.app-page .knowledge-grid .kb-item{min-height:175px}}
