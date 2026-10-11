@@ -5,7 +5,7 @@
 (async function(){
 'use strict';
 const APP_ID='1130415533005166';
-const CONFIG_ID='1629060925335567';
+const CONFIG_ID='2141503733114213';
 const sb=window.kaabeSupabase;
 const button=document.getElementById('wa-connect');
 const status=document.getElementById('wa-status');
