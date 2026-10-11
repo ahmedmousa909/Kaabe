@@ -4,7 +4,7 @@
    subscribe WABA webhooks, and store credentials server-side before enabling the button. */
 (async function(){
 'use strict';
-const APP_ID='1806220077398544';
+const APP_ID='1130415533005166';
 const CONFIG_ID='1629060925335567';
 const sb=window.kaabeSupabase;
 const button=document.getElementById('wa-connect');
