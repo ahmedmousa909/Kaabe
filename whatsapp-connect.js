@@ -35,7 +35,8 @@ if(!businessId){
 // Meta before a secure OAuth code exchange endpoint exists.
 try{
  const {data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'status',business_id:businessId}});
- if(data?.connection?.connection_status==='connected'){set('WhatsApp Business is connected to KAABE. Phone ID: '+data.connection.phone_number_id);return}\n if(error||data?.ready!==true){set('WhatsApp customer onboarding is waiting for Meta production approval. Your existing WhatsApp Business App remains unchanged.');return}
+ if(data?.connection?.connection_status==='connected'){set('WhatsApp Business is connected to KAABE. Phone ID: '+data.connection.phone_number_id);return}
+ if(error||data?.ready!==true){set('WhatsApp customer onboarding is waiting for Meta production approval. Your existing WhatsApp Business App remains unchanged.');return}
 }catch(e){set('Secure onboarding backend is not available yet. Your WhatsApp Business App is unchanged.');return}
 set('Ready to start Meta WhatsApp Business App onboarding.');
 button.disabled=false;
