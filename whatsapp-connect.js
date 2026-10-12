@@ -25,8 +25,8 @@ window.addEventListener('message',event=>{
 });
 try{({data:{session}}=await sb.auth.getSession())}catch(e){set('Unable to check login.');return}
 if(!session){set('Please log in to KAABE first.');return}
-let businessId=sessionStorage.getItem('kaabe_business_id');
-if(!businessId){
+let businessId=null;
+{
  const {data,error}=await sb.from('businesses').select('id').eq('owner_id',session.user.id).limit(1);
  if(error||!data?.length){set('Business account not found.');return}
  businessId=data[0].id;
@@ -34,10 +34,15 @@ if(!businessId){
 // Only enable onboarding when server explicitly confirms readiness. Never authorize
 // Meta before a secure OAuth code exchange endpoint exists.
 try{
- const {data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'status',business_id:businessId}});
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),12000);
+ let data,error;
+ try{({data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'status',business_id:businessId},signal:controller.signal}));}
+ finally{clearTimeout(timer)}
  if(data?.connection?.connection_status==='connected'){set('WhatsApp Business is connected to KAABE. Phone ID: '+data.connection.phone_number_id);return}
- if(error||data?.ready!==true){set('WhatsApp customer onboarding is waiting for Meta production approval. Your existing WhatsApp Business App remains unchanged.');return}
-}catch(e){set('Secure onboarding backend is not available yet. Your WhatsApp Business App is unchanged.');return}
+ if(error){set('KAABE onboarding server did not respond correctly. Please reload or check your login.');return}
+ if(data?.ready!==true){set('Meta customer onboarding is not enabled yet. Existing WhatsApp remains unchanged.');return}
+}catch(e){set('Could not reach KAABE onboarding server (12-second timeout). Check your internet connection and try again.');return}
 set('Ready to start Meta WhatsApp Business App onboarding.');
 button.disabled=false;
 function loadSDK(){
