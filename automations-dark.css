@@ -1,0 +1,26 @@
+/* Match KAABE AI Assistants dark orange dashboard. */
+html,body.automations-page{background:#08090b!important;color:#f7f7f8!important}
+body.automations-page .automation-layout{background:#08090b!important}
+body.automations-page .automation-main{background:#08090b!important;color:#f7f7f8!important;max-width:none}
+body.automations-page .automation-nav{background:#0c0d10!important;border-right:1px solid #342a24!important}
+body.automations-page .automation-nav a{color:#f2f2f4!important}
+body.automations-page .automation-nav a.selected{background:linear-gradient(105deg,#ff9a21,#ab4e0a)!important;color:white!important}
+body.automations-page .automation-nav a:hover:not(.selected){background:#242025!important}
+body.automations-page h1,body.automations-page h2,body.automations-page h3{color:#fff!important}
+body.automations-page p,body.automations-page .notice{color:#b6b7bd!important}
+body.automations-page .panel,body.automations-page .template{background:linear-gradient(140deg,#191a1f,#101115)!important;color:#fff!important;border:1px solid #39302b!important;box-shadow:0 8px 25px #0004!important}
+body.automations-page .template:hover{border-color:#ff901f!important}
+body.automations-page .workflow{background:transparent!important;border:0!important;border-top:1px solid #39302b!important;box-shadow:none!important;border-radius:0!important}
+body.automations-page .workflow small,body.automations-page .template small{color:#aeb0b8!important}
+body.automations-page .test-output{background:#202127!important;border:1px solid #49392d!important;color:#fff!important}
+body.automations-page .run-log{border-color:#39302b!important;color:#bcbec5!important}
+body.automations-page dialog{background:#181a20!important;color:white!important;border:1px solid #5d3b25!important}
+body.automations-page dialog::backdrop{background:#000b}
+body.automations-page input,body.automations-page textarea,body.automations-page select{background:#1b1d22!important;color:#fff!important;border:1px solid #53402e!important}
+body.automations-page label{color:#e9e9eb!important}
+body.automations-page .btn:not(.secondary){background:linear-gradient(110deg,#ffb332,#ff7610)!important;color:#1b1008!important;border:1px solid #f88a22!important}
+body.automations-page .btn.secondary{background:#222329!important;color:#f4f4f4!important;border:1px solid #4b4039!important}
+body.automations-page .pill{background:#322820!important;color:#f5d1aa!important}
+body.automations-page .pill.active{background:#153626!important;color:#8eebad!important}
+body.automations-page .eyebrow{color:#ff9a2d!important}
+body.automations-page .automation-nav img{vertical-align:middle}
