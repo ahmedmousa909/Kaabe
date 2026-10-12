@@ -11,7 +11,7 @@ const button=document.getElementById('wa-connect');
 const status=document.getElementById('wa-status');
 const set=(message)=>{status.textContent=message};
 if(!sb){set('KAABE authentication is unavailable.');return}
-let session;
+let session;\nlet signupIds=null;\nwindow.addEventListener('message',event=>{\n if(event.origin!=='https://www.facebook.com'&&event.origin!=='https://web.facebook.com')return;\n let data=event.data;try{if(typeof data==='string')data=JSON.parse(data)}catch{return}\n if(data?.type!=='WA_EMBEDDED_SIGNUP')return;\n const info=data.data||{};\n if(data.event==='FINISH'||data.event==='FINISH_ONLY_WABA'||data.event==='FINISH_WHATSAPP_BUSINESS_APP_ONBOARDING'){\n  const waba=String(info.waba_id||''),phone=String(info.phone_number_id||'');\n  if(/^\\d{5,30}$/.test(waba)&&/^\\d{5,30}$/.test(phone))signupIds={waba_id:waba,phone_number_id:phone};\n }\n});
 try{({data:{session}}=await sb.auth.getSession())}catch(e){set('Unable to check login.');return}
 if(!session){set('Please log in to KAABE first.');return}
 let businessId=sessionStorage.getItem('kaabe_business_id');
@@ -41,9 +41,9 @@ button.addEventListener('click',async()=>{
   await loadSDK();
   window.FB.login(async response=>{
    if(!response?.authResponse?.code){set('Connection cancelled or Meta did not return an authorization code.');button.disabled=false;return}
-   set('Completing secure server-side authorization…');
+   set('Completing secure server-side authorization…');\n   if(!signupIds){set('Meta did not return the required WhatsApp account and phone details. Connection was not saved.');button.disabled=false;return;}
    // The code is single-use and must never be printed to the UI or console.
-   const {data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'complete',business_id:businessId,code:response.authResponse.code}});
+   const {data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'complete',business_id:businessId,code:response.authResponse.code,...signupIds}});
    if(error||!data?.connected){set('Meta authorization received, but KAABE could not finish secure onboarding. Please contact support before retrying.')}
    else{set('WhatsApp connection completed. KAABE will verify webhook delivery before enabling AI replies.')}
    button.disabled=false;
