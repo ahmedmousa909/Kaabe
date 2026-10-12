@@ -128,4 +128,7 @@ function closeSidebar(){document.querySelector("#sidebar")?.classList.remove("op
 document.querySelector("#menu-btn")?.addEventListener("click",()=>document.querySelector("#sidebar-backdrop")?.classList.toggle("open"));
 document.querySelector("#sidebar-close")?.addEventListener("click",closeSidebar);
 document.querySelector("#sidebar-backdrop")?.addEventListener("click",closeSidebar);
-document.querySelectorAll("[data-coming]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();closeSidebar();alert(el.dataset.coming+" module comes next.");}));
+document.querySelectorAll("[data-coming]").forEach(el=>el.addEventListener("click",e=>{if(el.dataset.coming==="Automations"){e.preventDefault();location.assign("automations.html");return;}e.preventDefault();closeSidebar();alert(el.dataset.coming+" module comes next.");}));
+
+// Navigation safety net: handles older cached HTML with placeholder Automations links.
+document.addEventListener("click",e=>{const link=e.target.closest("aside.sidebar nav a");if(!link)return;if(link.textContent.trim()==="Automations"){e.preventDefault();e.stopImmediatePropagation();location.assign("automations.html");}},true);
