@@ -2,7 +2,7 @@ const client=window.kaabeSupabase,$=s=>document.querySelector(s),$$=s=>document.
 function closeSidebar(){ $("#sidebar")?.classList.remove("open"); $("#sidebar-backdrop")?.classList.remove("open"); }
 function openSidebar(){ $("#sidebar")?.classList.add("open"); $("#sidebar-backdrop")?.classList.add("open"); }
 function toast(t){const x=$("#toast");if(!x)return;x.textContent=t;x.classList.add("show");clearTimeout(window._kt);window._kt=setTimeout(()=>x.classList.remove("show"),2200)}
-(async()=>{const {data,error}=await client.auth.getSession();if(error||!data.session){location.href="login.html";return}const user=data.session.user;const full=user.user_metadata?.full_name||user.email?.split("@")[0]||"User";$("#welcome-name").textContent=full.split(" ")[0];$("#account-name").textContent=full;$("#avatar").textContent=full.charAt(0).toUpperCase();const {data:biz,error:bizError}=await client.from("businesses").select("id,name,timezone").eq("owner_id",user.id).order("created_at",{ascending:true}).limit(1);if(bizError)return;if(!biz||!biz.length){location.href="onboarding.html";return}sessionStorage.setItem("kaabe_business_id",biz[0].id);$("#side-business").textContent=biz[0].name;$("#side-zone").textContent=biz[0].timezone||"Europe/Berlin"})();
+(async()=>{const {data,error}=await client.auth.getSession();if(error||!data.session){location.href="login.html";return}const user=data.session.user;const full=user.user_metadata?.full_name||user.email?.split("@")[0]||"User";$("#welcome-name").textContent=full.split(" ")[0];$("#account-name").textContent=full;$("#avatar").textContent=full.charAt(0).toUpperCase();const {data:biz,error:bizError}=await client.from("businesses").select("id,name,timezone").eq("owner_id",user.id).order("created_at",{ascending:true}).limit(1);if(bizError)return;if(!biz||!biz.length){location.href="onboarding.html";return}sessionStorage.setItem("kaabe_business_id",biz[0].id);$("#side-business").textContent=biz[0].name;$("#side-zone").textContent=biz[0].timezone||"Europe/Berlin";await loadWorkspaceMetrics(biz[0].id)})();
 $("#menu-btn")?.addEventListener("click",()=>$("#sidebar")?.classList.contains("open")?closeSidebar():openSidebar());
 $("#sidebar-close")?.addEventListener("click",closeSidebar);$("#sidebar-backdrop")?.addEventListener("click",closeSidebar);
 $("#logout")?.addEventListener("click",async()=>{await client.auth.signOut();sessionStorage.removeItem("kaabe_business_id");location.href="index.html"});
@@ -17,3 +17,15 @@ document.getElementById("nav-knowledge")?.addEventListener("click",(e)=>{
 document.getElementById("quick-add-knowledge")?.addEventListener("click",()=>{
   window.location.assign("./knowledge.html?create=1");
 });
+
+// Counts are scoped to the signed-in business and enforced by Supabase RLS.
+async function loadWorkspaceMetrics(businessId){
+  const metrics=[["agents","#metric-agents"],["knowledge_items","#metric-knowledge"],["automations","#metric-automations"],["whatsapp_connections","#metric-connections"]];
+  await Promise.all(metrics.map(async ([table,selector])=>{
+    const el=$(selector);if(!el)return;
+    try{const {count,error}=await client.from(table).select("id",{count:"exact",head:true}).eq("business_id",businessId);
+      el.textContent=error?"—":String(count??0);
+      if(error)console.warn("KAABE metric unavailable:",table,error.message);
+    }catch(e){el.textContent="—";console.warn("KAABE metric unavailable:",table);}
+  }));
+}
