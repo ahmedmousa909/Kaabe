@@ -7,7 +7,7 @@ $("#menu-btn")?.addEventListener("click",()=>$("#sidebar")?.classList.contains("
 $("#sidebar-close")?.addEventListener("click",closeSidebar);$("#sidebar-backdrop")?.addEventListener("click",closeSidebar);
 $("#logout")?.addEventListener("click",async()=>{await client.auth.signOut();sessionStorage.removeItem("kaabe_business_id");location.href="index.html"});
 $("#quick-create-assistant")?.addEventListener("click",()=>location.href="assistants.html?create=1");
-$$("[data-agent]").forEach(b=>b.addEventListener("click",()=>location.href=`assistants.html?focus=${encodeURIComponent(b.dataset.agent)}`));
+$$("[data-agent]").forEach(b=>b.addEventListener("click",()=>location.href=b.dataset.agent==="whatsapp"?"whatsapp-connect.html":`assistants.html?focus=${encodeURIComponent(b.dataset.agent)}`));
 $$("[data-coming]").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();closeSidebar();toast(el.dataset.coming+" is the next Kaabe module to connect.");}));
 $("#range-btn")?.addEventListener("click",()=>toast("Dashboard range: Last 7 days"));
 document.getElementById("nav-knowledge")?.addEventListener("click",(e)=>{
