@@ -34,7 +34,7 @@ let currentUser = null;
     .eq("owner_id", currentUser.id)
     .limit(1);
 
-  if (!businessError && businesses && businesses.length) {
+  if (businessError) {\n    showMessage("Could not check your workspace: " + businessError.message);\n    return;\n  }\n  if (businesses && businesses.length) {
     location.href = "dashboard.html";
   }
 })();
@@ -51,7 +51,7 @@ form.addEventListener("submit", async (event) => {
     const name = form.business_name.value.trim();
     if (!name) throw new Error("Enter your business name.");
 
-    const baseSlug = makeSlug(name) || "business";
+    // Prevent duplicate workspaces after a slow response or page refresh.\n    const { data: existing, error: existingError } = await client.from("businesses").select("id").eq("owner_id", currentUser.id).limit(1);\n    if (existingError) throw existingError;\n    if (existing?.length) { location.href = "dashboard.html"; return; }\n\n    const baseSlug = makeSlug(name) || "business";
     const slug = `${baseSlug}-${currentUser.id.slice(0, 8)}`;
 
     const { data: business, error } = await client
@@ -68,20 +68,7 @@ form.addEventListener("submit", async (event) => {
 
     if (error) throw error;
 
-    // Add owner membership. This may be tightened further in the next DB/RLS step.
-    const { error: memberError } = await client
-      .from("business_members")
-      .insert({
-        business_id: business.id,
-        user_id: currentUser.id,
-        role: "owner"
-      });
-
-    if (memberError) {
-      console.warn("Workspace created; membership insert needs policy update:", memberError.message);
-    }
-
-    showMessage("Workspace created successfully.", "success");
+    // The business owner has direct RLS access through businesses.owner_id.\n    // Memberships must be provisioned by an authorized backend, not the browser.\n\n    showMessage("Workspace created successfully.", "success");
     setTimeout(() => location.href = "dashboard.html", 700);
   } catch (error) {
     showMessage(error.message || "Could not create your workspace.");
