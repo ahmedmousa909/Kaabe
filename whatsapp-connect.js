@@ -11,7 +11,18 @@ const button=document.getElementById('wa-connect');
 const status=document.getElementById('wa-status');
 const set=(message)=>{status.textContent=message};
 if(!sb){set('KAABE authentication is unavailable.');return}
-let session;\nlet signupIds=null;\nwindow.addEventListener('message',event=>{\n if(event.origin!=='https://www.facebook.com'&&event.origin!=='https://web.facebook.com')return;\n let data=event.data;try{if(typeof data==='string')data=JSON.parse(data)}catch{return}\n if(data?.type!=='WA_EMBEDDED_SIGNUP')return;\n const info=data.data||{};\n if(data.event==='FINISH'||data.event==='FINISH_ONLY_WABA'||data.event==='FINISH_WHATSAPP_BUSINESS_APP_ONBOARDING'){\n  const waba=String(info.waba_id||''),phone=String(info.phone_number_id||'');\n  if(/^\\d{5,30}$/.test(waba)&&/^\\d{5,30}$/.test(phone))signupIds={waba_id:waba,phone_number_id:phone};\n }\n});
+let session;
+let signupIds=null;
+window.addEventListener('message',event=>{
+ if(event.origin!=='https://www.facebook.com'&&event.origin!=='https://web.facebook.com')return;
+ let data=event.data;try{if(typeof data==='string')data=JSON.parse(data)}catch{return}
+ if(data?.type!=='WA_EMBEDDED_SIGNUP')return;
+ const info=data.data||{};
+ if(data.event==='FINISH'||data.event==='FINISH_ONLY_WABA'||data.event==='FINISH_WHATSAPP_BUSINESS_APP_ONBOARDING'){
+  const waba=String(info.waba_id||''),phone=String(info.phone_number_id||'');
+  if(/^\d{5,30}$/.test(waba)&&/^\d{5,30}$/.test(phone))signupIds={waba_id:waba,phone_number_id:phone};
+ }
+});
 try{({data:{session}}=await sb.auth.getSession())}catch(e){set('Unable to check login.');return}
 if(!session){set('Please log in to KAABE first.');return}
 let businessId=sessionStorage.getItem('kaabe_business_id');
@@ -24,7 +35,7 @@ if(!businessId){
 // Meta before a secure OAuth code exchange endpoint exists.
 try{
  const {data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'status',business_id:businessId}});
- if(error||data?.ready!==true){set('Meta configuration created. Secure onboarding backend is not yet enabled; your existing WhatsApp Business App remains unchanged.');return}
+ if(data?.connection?.connection_status==='connected'){set('WhatsApp Business is connected to KAABE. Phone ID: '+data.connection.phone_number_id);return}\n if(error||data?.ready!==true){set('WhatsApp customer onboarding is waiting for Meta production approval. Your existing WhatsApp Business App remains unchanged.');return}
 }catch(e){set('Secure onboarding backend is not available yet. Your WhatsApp Business App is unchanged.');return}
 set('Ready to start Meta WhatsApp Business App onboarding.');
 button.disabled=false;
@@ -36,12 +47,13 @@ function loadSDK(){
  });
 }
 button.addEventListener('click',async()=>{
- button.disabled=true;set('Opening Meta onboarding…');
+ button.disabled=true;signupIds=null;set('Opening Meta onboarding…');
  try{
   await loadSDK();
   window.FB.login(async response=>{
    if(!response?.authResponse?.code){set('Connection cancelled or Meta did not return an authorization code.');button.disabled=false;return}
-   set('Completing secure server-side authorization…');\n   if(!signupIds){set('Meta did not return the required WhatsApp account and phone details. Connection was not saved.');button.disabled=false;return;}
+   set('Completing secure server-side authorization…');
+   if(!signupIds){set('Meta did not return the required WhatsApp account and phone details. Connection was not saved.');button.disabled=false;return;}
    // The code is single-use and must never be printed to the UI or console.
    const {data,error}=await sb.functions.invoke('kaabe-whatsapp-onboard',{body:{action:'complete',business_id:businessId,code:response.authResponse.code,...signupIds}});
    if(error||!data?.connected){set('Meta authorization received, but KAABE could not finish secure onboarding. Please contact support before retrying.')}
