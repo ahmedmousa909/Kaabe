@@ -10,6 +10,8 @@ const sb=window.kaabeSupabase;
 const button=document.getElementById('wa-connect');
 const status=document.getElementById('wa-status');
 const set=(message)=>{status.textContent=message};
+const timed=(promise,ms=10000)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')),ms))]);
+set('KAABE script loaded. Checking login…');
 if(!sb){set('KAABE authentication is unavailable.');return}
 let session;
 let signupIds=null;
@@ -23,14 +25,18 @@ window.addEventListener('message',event=>{
   if(/^\d{5,30}$/.test(waba)&&/^\d{5,30}$/.test(phone))signupIds={waba_id:waba,phone_number_id:phone};
  }
 });
-try{({data:{session}}=await sb.auth.getSession())}catch(e){set('Unable to check login.');return}
+try{({data:{session}}=await timed(sb.auth.getSession()))}catch(e){set('Unable to check login.');return}
 if(!session){set('Please log in to KAABE first.');return}
+set('Login confirmed. Finding your business…');
 let businessId=null;
 {
- const {data,error}=await sb.from('businesses').select('id').eq('owner_id',session.user.id).limit(1);
+ let data,error;
+ try{({data,error}=await timed(sb.from('businesses').select('id').eq('owner_id',session.user.id).limit(1)));}
+ catch(e){set('Business lookup timed out. Please check Supabase connection.');return}
  if(error||!data?.length){set('Business account not found.');return}
  businessId=data[0].id;
 }
+set('Business found. Checking Meta onboarding readiness…');
 // Only enable onboarding when server explicitly confirms readiness. Never authorize
 // Meta before a secure OAuth code exchange endpoint exists.
 try{
