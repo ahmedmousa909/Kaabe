@@ -54,3 +54,7 @@ body:not(.app-page) .dash-main .mini-stats small,body:not(.app-page) .dash-main 
 body:not(.app-page) .hero{background:radial-gradient(ellipse at 87% 87%,#702c09,transparent 38%),#08090b!important}
 body:not(.app-page) .logo-row img,body:not(.app-page) .float-card img{background:transparent}
 @media(max-width:800px){body:not(.app-page) .trusted .logo-row div{padding:7px 9px}body:not(.app-page) .team{padding-top:34px!important}body:not(.app-page) .steps div{padding:8px}}
+
+/* AUNO visual brand: preserve existing page layouts and functional selectors */
+.brand img[src="auno-logo.svg"],.dashboard-brand img[src="auno-logo.svg"],.mobile-dashboard-brand img[src="auno-logo.svg"],.footer-brand img[src="auno-logo.svg"],.auth-brand img[src="auno-logo.svg"],.automation-nav a img[src="auno-logo.svg"]{width:142px!important;height:auto!important;max-width:100%!important;object-fit:contain!important}
+.brand:has(img[src="auno-logo.svg"])>span,.dashboard-brand:has(img[src="auno-logo.svg"])>.kaabe-brand-name,.mobile-dashboard-brand:has(img[src="auno-logo.svg"])>.kaabe-brand-name,.footer-brand:has(img[src="auno-logo.svg"])>strong,.auth-brand:has(img[src="auno-logo.svg"])>b,.automation-nav a:has(img[src="auno-logo.svg"])>.kaabe-brand-name{display:none!important}
