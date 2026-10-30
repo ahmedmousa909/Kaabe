@@ -1,0 +1,11 @@
+# Security requirements before public launch
+- Authenticate all APIs and enforce workspace-level authorization.
+- Implement Postgres row-level security for each tenant.
+- Use OAuth PKCE/state, encrypt provider credentials server-side, and support token revocation.
+- Verify webhook signatures and reject replays.
+- Run workflows only in a sandboxed worker with timeouts, SSRF protections, allowlisted destinations and egress limits.
+- Persist executions in a durable queue; retry with backoff and idempotency.
+- Require human approval for money movement, deletion, or consequential customer actions.
+- Store structured logs without secrets or unnecessary personal data.
+- Implement retention, GDPR export/deletion, rate limits, and abuse controls.
+- Keep the prototype API bound to loopback; never expose it as a public execution service.
